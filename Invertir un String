@@ -1,0 +1,24 @@
+/*
+ * Crea un programa que invierta el orden de una cadena de texto
+ * sin usar funciones propias del lenguaje que lo hagan de forma automática.
+ * - Si le pasamos "Hola mundo" nos retornaría "odnum aloH"
+ */
+public class invertir_string {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(invertirString("este ha sido más manejable"));
+		
+	}
+	public static String invertirString(String palabra){
+		int longitud = palabra.length();
+		int temp = longitud -1;
+		char[] resu = new char[longitud];		
+		
+		for(int i =0; i<longitud;i++){
+			resu[temp] =palabra.charAt(i);
+			temp--;
+		}
+		return new String(resu);
+	}
+}
