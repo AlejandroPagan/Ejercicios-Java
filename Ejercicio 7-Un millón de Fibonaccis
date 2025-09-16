@@ -1,0 +1,44 @@
+/*En este kata tendrás que calcular fib(n) donde:
+*
+*fib(0) := 0      // El primer número de Fibonacci es 0
+*fib(1) := 1      // El segundo número de Fibonacci es 1
+*fib(n + 2) := fib(n + 1) + fib(n)  
+*                 // Para n ≥ 0, cada número de Fibonacci es la suma de los dos anteriores
+*
+*Debes escribir un algoritmo que pueda manejar valores de n hasta 2.000.000.
+*
+*Tu algoritmo debe devolver el resultado exacto como un número entero, con precisión completa. 
+*También debe manejar correctamente números negativos como entrada.
+*Ejercicio extraído de "codewars.com" 
+*PD: cabe resaltar que esta es una solución "lenta" al problema que se presenta, una solución más rápida requeriría del uso de matrices para su resolución.
+*/
+import java.math.BigInteger;
+
+public class Fibonacci {
+
+  public static BigInteger fib(BigInteger n) {
+    BigInteger num1, num2, resultado,i;
+    num1=BigInteger.ZERO;
+    num2=BigInteger.ONE;
+    resultado = BigInteger.ZERO;
+    BigInteger m = n.abs();
+    
+    if(n.compareTo(BigInteger.ZERO)==0){
+      return BigInteger.ZERO;
+    }
+    if(n.compareTo(BigInteger.ONE)==0){
+      return BigInteger.ONE;
+    }
+    for(i = BigInteger.ONE; i.compareTo(m) < 0 ;i=i.add(BigInteger.ONE)){
+      resultado=num1.add(num2);
+      num1=num2;
+      num2 = resultado;
+    }
+    if(n.compareTo(BigInteger.ZERO)<0 && m.remainder(BigInteger.TWO).equals(BigInteger.ZERO)){
+      return num2.negate();
+    }
+    else{
+        return num2;
+      }
+    }
+}
